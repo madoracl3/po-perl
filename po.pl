@@ -10,15 +10,14 @@ my $result ;
 my $word = "\<result\>" ;
 
 $result = qx{java -jar /autodx/prevalent_services/PartOverrideLookup.jar $ARGV[0]} ;
-$count = () = $result = /$word/g ;
 
-print "$count\n" ;
+my @count = $result =~ /$word/g;
 
-if ($count == 0) {
+if (scalar(@count) == 0) {
     print "Error. No part numbers found.\n" ;
-} elsif ($count == 1) {
+} elsif (scalar(@count) == 1) {
     print "Single part number found.\n" ;
-} elsif ($count > 1) {
+} elsif (scalar(@count) > 1) {
     print "Multiple part numbers.\n" ;
 }
 
