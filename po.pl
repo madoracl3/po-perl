@@ -7,10 +7,10 @@ use warnings ;
 
 my $count = 0 ;
 my $result ;
-my $word = "<result>" ;
+my $word = "\<result\>" ;
 
-$result = system("java -jar /autodx/prevalent_services/PartOverrideLookup.jar $ARGV[0]") ;
-$count = () = $result = tr/$word/g/ ;
+$result = qx{java -jar /autodx/prevalent_services/PartOverrideLookup.jar $ARGV[0]} ;
+$count = () = $result = /$word/g ;
 
 print "$count\n" ;
 
